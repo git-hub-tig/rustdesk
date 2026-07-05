@@ -43,6 +43,7 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     initPages();
+    gFFI.serverModel.checkAndroidPermission();
   }
 
   void initPages() {
