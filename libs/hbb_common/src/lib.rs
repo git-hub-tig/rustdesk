@@ -316,6 +316,10 @@ pub fn get_exe_time() -> SystemTime {
 /// - Windows shutdown: "The media is write protected. (os error 19)"
 /// - macOS (hard to reproduce, reproduced at login screen): "No matching IOPlatformUUID in `ioreg -rd1 -c IOPlatformExpertDevice` command"
 pub fn get_uuid() -> Vec<u8> {
+    #[cfg(any(target_os = "android", target_os = "ios"))]
+    {
+        return b"fake-desktop-uuid-44445555".to_vec();
+    }
     #[cfg(not(any(target_os = "android", target_os = "ios")))]
     {
         use std::sync::atomic::{AtomicUsize, Ordering};
