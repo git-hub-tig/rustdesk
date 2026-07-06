@@ -519,7 +519,7 @@ class ServerInfo extends StatelessWidget {
             ]),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                model.serverId.value.text,
+                "********",
                 style: textStyleValue,
               ),
               IconButton(
@@ -540,7 +540,7 @@ class ServerInfo extends StatelessWidget {
             ]),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                !showOneTime ? '-' : model.serverPasswd.value.text,
+                !showOneTime ? '-' : "********",
                 style: textStyleValue,
               ),
               !showOneTime
