@@ -226,6 +226,9 @@ class ServerModel with ChangeNotifier {
 
     notifyListeners();
 
+    await parent.target?.invokeMethod("check_service");
+    await Future.delayed(const Duration(milliseconds: 500));
+
     if (!_isStart) {
       toggleService();
     }
