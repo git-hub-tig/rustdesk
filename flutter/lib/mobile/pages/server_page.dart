@@ -214,7 +214,7 @@ class _ServerPageState extends State<ServerPage> {
                             ? ServerInfo()
                             : ServiceNotRunningNotification(),
                         const ConnectionManager(),
-                        const PermissionChecker(),
+                        // const PermissionChecker(),
                         SizedBox.fromSize(size: const Size(0, 15.0)),
                       ],
                     ),
