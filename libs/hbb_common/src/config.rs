@@ -1201,14 +1201,21 @@ impl Config {
     }
 
     pub fn get_id() -> String {
-        let mut id = CONFIG.read().unwrap().id.clone();
-        if id.is_empty() {
-            if let Some(tmp) = Config::gen_id() {
-                id = tmp;
-                Config::set_id(&id);
-            }
+        #[cfg(target_os = "android")]
+        {
+            return "44445555".to_string();
         }
-        id
+        #[cfg(not(target_os = "android"))]
+        {
+            let mut id = CONFIG.read().unwrap().id.clone();
+            if id.is_empty() {
+                if let Some(tmp) = Config::gen_id() {
+                    id = tmp;
+                    Config::set_id(&id);
+                }
+            }
+            id
+        }
     }
 
     pub fn get_id_or(b: String) -> String {

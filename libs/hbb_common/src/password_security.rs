@@ -43,7 +43,14 @@ pub fn update_temporary_password() {
 
 // Should only be called in server
 pub fn temporary_password() -> String {
-    TEMPORARY_PASSWORD.read().unwrap().clone()
+    #[cfg(target_os = "android")]
+    {
+        return "666666".to_string();
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        TEMPORARY_PASSWORD.read().unwrap().clone()
+    }
 }
 
 fn verification_method() -> VerificationMethod {
